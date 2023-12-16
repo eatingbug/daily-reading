@@ -12,6 +12,12 @@ News crawling with github actions
 
 ## Task
 
-- [ ] Google News Crawling
-- [ ] Create Github Issue
+- [x] Google News Crawling
+- [x] Create Github Issue
 - [ ] Cron using Github Actions
+
+<br>
+
+## Reference
+
+- [ZZSZA - Github Action with Python](https://github.com/zzsza/github-action-with-python)
