@@ -14,7 +14,7 @@ News crawling with github actions
 
 - [x] Google News Crawling
 - [x] Create Github Issue
-- [ ] Cron using Github Actions
+- [x] Cron using Github Actions
 
 <br>
 

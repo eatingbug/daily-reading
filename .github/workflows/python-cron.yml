@@ -10,7 +10,7 @@ name: Upload Python Package
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 22 * * *'
 
 jobs:
   build:
