@@ -41,7 +41,7 @@ def extract_news_data(soup):
         news_link = url_prefix + url_suffix[1:]
         index += 1
         
-        content = f"<a href={news_link}>{index}. {news_name}</a><br/>\n"
+        content = f'<a href="{news_link}">{index}. {news_name}</a><br/>\n'
         print(content)
         upload_contents += content
 

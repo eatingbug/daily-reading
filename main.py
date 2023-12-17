@@ -1,5 +1,5 @@
-import datetime
 import os
+from datetime import datetime
 
 from pytz import timezone
 from crawling import extract_news_data, parsing_beautifulsoup
