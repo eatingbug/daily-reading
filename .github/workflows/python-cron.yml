@@ -36,10 +36,9 @@ jobs:
       if: steps.cache-pipenv.outputs.cache-hit != 'true'
       run: |
         pipenv install
-        pipenv shell
 
     - name: Run main.py
       run: |
-        python main.py
+        pipenv run python main.py
       env:
         MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
