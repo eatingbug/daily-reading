@@ -7,7 +7,7 @@ name = "pypi"
 beautifulsoup4 = "==4.7.1"
 requests = "==2.22.0"
 pygithub = "==1.51"
-pytz = "==2019.1"
+pytz = "*"
 
 [dev-packages]
 
