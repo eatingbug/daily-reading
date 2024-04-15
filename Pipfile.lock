@@ -1,10 +1,11 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "d17aaa1ea4dfc656c308684db63d01740addbd27a2589362123028a90ad47e95"
+            "sha256": "119b2b6d8234c8afca962e2e974c6d22f42eb6ebe9571aab1a160ef3ef095093"
         },
         "pipfile-spec": 6,
         "requires": {
+            "python_full_version": "3.9.19",
             "python_version": "3.9"
         },
         "sources": [
@@ -27,11 +28,11 @@
         },
         "certifi": {
             "hashes": [
-                "sha256:9b469f3a900bf28dc19b8cfbf8019bf47f7fdd1a65a1d4ffb98fc14166beb4d1",
-                "sha256:e036ab49d5b79556f99cfc2d9320b34cfbe5be05c5871b51de9329f0603b0474"
+                "sha256:0569859f95fc761b18b45ef421b1290a0f65f147e92a1e5eb3e635f9a5e4e66f",
+                "sha256:dc383c07b76109f368f6106eee2b593b04a011ea4d55f652c6ca24a754d1cdd1"
             ],
             "markers": "python_version >= '3.6'",
-            "version": "==2023.11.17"
+            "version": "==2024.2.2"
         },
         "chardet": {
             "hashes": [
@@ -71,14 +72,6 @@
             ],
             "markers": "python_version >= '3.7'",
             "version": "==2.8.0"
-        },
-        "pytz": {
-            "hashes": [
-                "sha256:303879e36b721603cc54604edcac9d20401bdbe31e1e4fdee5b9f98d5d31dfda",
-                "sha256:d747dd3d23d77ef44c6a3526e274af6efeb0a6f1afd5a69ba4d5be4098c8e141"
-            ],
-            "index": "pypi",
-            "version": "==2019.1"
         },
         "requests": {
             "hashes": [
