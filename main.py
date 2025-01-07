@@ -14,7 +14,7 @@ if __name__ == "__main__":
     today = datetime.now(seoul_timezone)
     today_date = today.strftime("%Y년 %m월 %d일")
 
-    business_news_url = "https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx6TVdZU0FtdHZHZ0pMVWlnQVAB?hl=ko&gl=KR&ceid=KR%3Ako"
+    business_news_url = "https://finance.naver.com/news/mainnews.naver"
     soup = parsing_beautifulsoup(business_news_url)
     upload_contents = extract_news_data(soup)
 

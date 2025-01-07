@@ -23,8 +23,8 @@ def extract_news_data(soup):
     """
 
     upload_contents = ''
-    news_posts = soup.select(".PO9Zff")
-    url_prefix = "https://news.google.com"
+    news_posts = soup.select("#contentarea_left > div.mainNewsList._replaceNewsLink > ul > li")
+    url_prefix = "https://finance.naver.com/"
     print(len(news_posts))
     index = 0
 
@@ -32,17 +32,14 @@ def extract_news_data(soup):
         if index >= 30:
             break
 
-        news = news.select("c-wiz > div > article > a")
-        if news == []:
-            continue
-
-        news_name = news[0].text
-        url_suffix = news[0].attrs['href']
+        news_name = news.select_one("dd.articleSubject > a").text
+        url_suffix = news.select_one("dd.articleSubject > a")['href']
         news_link = url_prefix + url_suffix[1:]
+        content = news.select_one("dd.articleSummary").text
         index += 1
-        
-        content = f'<a href="{news_link}">{index}. {news_name}</a><br/>\n'
-        print(content)
-        upload_contents += content
+
+        upload_content = f'<a href="{news_link}">{index}. {news_name}</a><br/>\n{content}<br/>\n'
+        print(upload_content)
+        upload_contents += upload_content
 
     return upload_contents
