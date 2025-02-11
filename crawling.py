@@ -35,11 +35,12 @@ def extract_news_data(soup):
         news_name = news.select_one("dd.articleSubject > a").text
         url_suffix = news.select_one("dd.articleSubject > a")['href']
         news_link = url_prefix + url_suffix[1:]
-        content = news.select_one("dd.articleSummary").text
+        content = news.select_one("dd.articleSummary").text.strip()
+        content = content.replace('\n', '').replace('\t', '').replace('  ', ' ')
+        content = content.split('|')[0].strip()
         index += 1
 
         upload_content = f'<a href="{news_link}">{index}. {news_name}</a><br/>\n{content}<br/>\n'
-        print(upload_content)
         upload_contents += upload_content
 
     return upload_contents
