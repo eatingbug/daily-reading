@@ -8,7 +8,7 @@ from github_utils import get_github_repo, upload_github_issue
 
 if __name__ == "__main__":
     access_token = os.environ['MY_GITHUB_TOKEN']
-    repository_name = "news-reading"
+    repository_name = "daily-reading"
 
     seoul_timezone = ZoneInfo('Asia/Seoul')
     today = datetime.now(seoul_timezone)
