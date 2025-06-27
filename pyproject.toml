@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "news-reading"
+version = "0.1.0"
+description = "scrap daily news"
+authors = ["None"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+beautifulsoup4 = "^4.12.3"
+requests = "^2.32.3"
+pygithub = "^2.5.0"
+selenium = "^4.33.0"
+webdriver-manager = "^4.0.2"
+selenium-stealth = "^1.0.6"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
