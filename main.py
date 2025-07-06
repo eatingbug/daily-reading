@@ -28,7 +28,7 @@ if __name__ == "__main__":
         fix_hairline=True,
     )
     
-    business_news_url = "https://perplexity.ai/finance/"
+    business_news_url = "https://www.perplexity.ai/rest/finance/market-summary/market"
     driver.get(business_news_url)
 
     html = driver.page_source

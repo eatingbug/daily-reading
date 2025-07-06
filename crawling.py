@@ -1,12 +1,11 @@
+import json
 from bs4 import BeautifulSoup
 import requests
-import time
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
-from selenium_stealth import stealth
 
 
 def get_chrome_driver():
@@ -74,32 +73,15 @@ def extract_finance_news(soup):
     upload_contents = '## Finance News\n\n'
     # 리스트 아이템들을 모두 선택 (상대경로, 태그 위주)
     
-    h2_tag = soup.find("h2", string=lambda text: text and "시장 요약" in text)
-    if not h2_tag:
-        upload_contents += "시장 요약 섹션을 찾을 수 없습니다.\n"
-        return upload_contents
+    json_text = soup.get_text()
+    json_data = json.loads(json_text)
 
-    summary_div = h2_tag.find_parent("div")
-    if not summary_div:
-        upload_contents += "시장 요약 상위 div를 찾을 수 없습니다.\n"
-        return upload_contents
+    summary = json_data.get('data', {}).get('summary', '')
 
-    next_div = summary_div.find_next_sibling("div")
-    if not next_div:
-        upload_contents += "시장 요약 다음 섹션을 찾을 수 없습니다.\n"
-        return upload_contents
-    
-    div_list = next_div.select("div > div > div > div > div")
     index = 0
-
-    news_items = div_list[0].find_all("div", class_="border-borderMain/50", recursive=True)
-
-    for item in news_items:
-        children = item.find_all("div", recursive=False)
-        if len(children) < 2:
-            continue
-        title = children[0].get_text(strip=True)
-        content = children[1].get_text(strip=True)
+    for item in summary:
+        title = item.get('header', '').strip()
+        content = item.get('detail', '').strip()
 
         index += 1
 
