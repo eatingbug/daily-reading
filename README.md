@@ -21,3 +21,11 @@ News crawling with github actions
 ## Reference
 
 - [ZZSZA - Github Action with Python](https://github.com/zzsza/github-action-with-python)
+
+## 💰 Bounty Contribution
+
+- **Task:** 2026년 04월 28일_뉴스
+- **Reward:** $79488
+- **Source:** GitHub-Paid
+- **Date:** 2026-04-28
+
