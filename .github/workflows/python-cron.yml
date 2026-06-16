@@ -11,6 +11,7 @@ name: Use Python Poetry cache on GitHub Actions workflow
 on:
   schedule:
     - cron: '30 21 * * *'
+  workflow_dispatch:
 
 env:
   PYTHON_VERSION: "3.11"
