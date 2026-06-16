@@ -4,7 +4,7 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 
 from bs4 import BeautifulSoup
-from crawling import extract_finance_news, extract_geeknews, get_chrome_driver, parsing_beautifulsoup
+from crawling import fetch_finance_news, extract_geeknews, get_chrome_driver, parsing_beautifulsoup
 from github_utils import get_github_repo, upload_github_issue
 from selenium_stealth import stealth
 
@@ -17,6 +17,8 @@ if __name__ == "__main__":
     today = datetime.now(seoul_timezone)
     today_date = today.strftime("%Y년 %m월 %d일")
 
+    finance_contents = fetch_finance_news()
+
     driver = get_chrome_driver()
 
     stealth(driver,
@@ -27,13 +29,6 @@ if __name__ == "__main__":
         renderer="Intel Iris OpenGL Engine",
         fix_hairline=True,
     )
-    
-    business_news_url = "https://www.perplexity.ai/rest/finance/market-summary/market"
-    driver.get(business_news_url)
-
-    html = driver.page_source
-    soup = BeautifulSoup(html, 'html.parser')
-    finance_contents = extract_finance_news(soup)
 
     parsing_url = "https://news.hada.io/past"
     soup = parsing_beautifulsoup(parsing_url)

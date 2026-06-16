@@ -64,37 +64,28 @@ def extract_geeknews(soup):
     return upload_contents
 
 
-def extract_finance_news(soup):
+def fetch_finance_news():
     """
-    BeautifulSoup Object에서 Finance News 데이터를 추출하는 함수
-    :param soup: BeautifulSoup soup Object
+    Perplexity Finance API에서 시장 요약 데이터를 가져오는 함수
     :return: contents(str)
     """
     upload_contents = '## Finance News\n\n'
-    # 리스트 아이템들을 모두 선택 (상대경로, 태그 위주)
-    
-    pre_tag = soup.find('pre')
-    json_text = pre_tag.get_text() if pre_tag else soup.get_text()
-    json_text = json_text.strip()
+    url = "https://www.perplexity.ai/rest/finance/market-summary/market"
 
-    if not json_text:
-        return upload_contents
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+        "Accept": "application/json",
+    }
 
-    json_data = json.loads(json_text)
+    response = requests.get(url, headers=headers, timeout=30)
+    response.raise_for_status()
 
-    summary = json_data.get('data', {}).get('summary', '')
+    json_data = response.json()
+    summary = json_data.get('data', {}).get('summary', [])
 
-    index = 0
-    for item in summary:
+    for index, item in enumerate(summary, start=1):
         title = item.get('header', '').strip()
         content = item.get('detail', '').strip()
-
-        index += 1
-
-        upload_content = (
-            f'{index}. {title}\n'
-            f'`{content}`\n'
-        )
-        upload_contents += upload_content
+        upload_contents += f'{index}. {title}\n`{content}`\n'
 
     return upload_contents
