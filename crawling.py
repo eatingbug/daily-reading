@@ -73,7 +73,13 @@ def extract_finance_news(soup):
     upload_contents = '## Finance News\n\n'
     # 리스트 아이템들을 모두 선택 (상대경로, 태그 위주)
     
-    json_text = soup.get_text()
+    pre_tag = soup.find('pre')
+    json_text = pre_tag.get_text() if pre_tag else soup.get_text()
+    json_text = json_text.strip()
+
+    if not json_text:
+        return upload_contents
+
     json_data = json.loads(json_text)
 
     summary = json_data.get('data', {}).get('summary', '')
